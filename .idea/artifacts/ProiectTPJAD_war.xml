@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ProiectTPJAD:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ProiectTPJAD-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ProiectTPJAD:war exploded" />
+    </root>
+  </artifact>
+</component>
