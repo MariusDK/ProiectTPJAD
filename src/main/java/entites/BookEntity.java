@@ -92,4 +92,20 @@ public class BookEntity implements Serializable {
             joinColumns = @JoinColumn( name = "Book_ID", referencedColumnName = "ID" ),
             inverseJoinColumns = @JoinColumn (name = "Genre_ID", referencedColumnName = "ID"))
     private List<GenreEntity> genreEntities;
+
+    public List<PersonEntity> getPersonEntities() {
+        return personEntities;
+    }
+
+    public void setPersonEntities(List<PersonEntity> personEntities) {
+        this.personEntities = personEntities;
+    }
+
+    public List<GenreEntity> getGenreEntities() {
+        return genreEntities;
+    }
+
+    public void setGenreEntities(List<GenreEntity> genreEntities) {
+        this.genreEntities = genreEntities;
+    }
 }

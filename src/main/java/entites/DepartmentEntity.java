@@ -39,13 +39,13 @@ public class DepartmentEntity implements Serializable{
     }
 
     @OneToMany(mappedBy = "departamentEntity")
-    private List<main.java.entites.LibrariumEntity> librariumEntities;
+    private List<LibrariumEntity> librariumEntities;
 
-    public List<main.java.entites.LibrariumEntity> getLibrariumEntities() {
+    public List<LibrariumEntity> getLibrariumEntities() {
         return librariumEntities;
     }
 
-    public void setLibrariumEntities(List<main.java.entites.LibrariumEntity> librariumEntities) {
+    public void setLibrariumEntities(List<LibrariumEntity> librariumEntities) {
         this.librariumEntities = librariumEntities;
     }
     @OneToMany(mappedBy = "departamentEntity")

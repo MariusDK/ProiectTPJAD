@@ -1,25 +1,34 @@
 package beans;
 
-import entites.AuthorEntity;
-import entites.BookEntity;
-import entites.DepartmentEntity;
-import entites.PersonEntity;
+import entites.*;
 import interfaces.IControllerBean;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless(name = "ControllerBean")
 @Local(interfaces.IControllerBean.class)
 
 public class ControllerBean implements IControllerBean {
+    @PersistenceContext(unitName = "NewPersistenceUnit")
+
+    private EntityManager manager;
     public ControllerBean() {
     }
 
     @Override
     public void insertPerson(String name, int CNP, int phoneNumber, String type) {
-
+        PersonEntity personEntity = new PersonEntity();
+        personEntity.setName(name);
+        personEntity.setCNP(CNP);
+        personEntity.setPhoneNumber(phoneNumber);
+        LibrariumEntity librariumEntity = new LibrariumEntity();
+        librariumEntity.setType(type);
+        manager.persist(personEntity);
+        manager.persist(librariumEntity);
     }
 
     @Override
