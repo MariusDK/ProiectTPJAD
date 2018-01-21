@@ -62,4 +62,11 @@ public class LibrariumEntity implements Serializable {
     public void setBookEntitys(List<BookEntity> bookEntitys) {
         this.bookEntitys = bookEntitys;
     }
+
+    @Override
+    public String toString() {
+        return "LibrariumEntity{" +
+                "id=" + id +
+                ", type='" + type;
+    }
 }

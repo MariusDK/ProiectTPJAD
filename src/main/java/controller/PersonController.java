@@ -53,10 +53,18 @@ public class PersonController {
         return departmentEntity;
     }
 
-    public void savePerson(PersonEntity personEntity, String type)
+    public void savePerson(PersonEntity personEntity, LibrariumEntity librariumEntity)
     {
-        System.out.println(type);
-        personBean.insertPerson(personEntity, type);
+        System.out.println(librariumEntity.getType());
+        System.out.println(librariumEntity.getType());
+        System.out.println(librariumEntity.getType());
+        System.out.println(librariumEntity.getType());
+        System.out.println(librariumEntity.getType());
+        System.out.println(librariumEntity.getType());
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("SUCA");
+
+        personBean.insertPerson(personEntity, librariumEntity);
     }
     public void updatePerson(PersonEntity personEntity,LibrariumEntity librariumEntity)
     {
@@ -79,6 +87,11 @@ public class PersonController {
     {
 
         return departmentBean.getAllDepartments();
+    }
+    public String convertString(LibrariumEntity librariumEntity)
+    {
+
+        return librariumBean.toString();
     }
 
 

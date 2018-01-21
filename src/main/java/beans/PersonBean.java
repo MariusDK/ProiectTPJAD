@@ -21,16 +21,17 @@ public class PersonBean implements IPersonBean {
     private EntityManager manager;
 
     @Override
-    public void insertPerson(PersonEntity personEntity, String type) {
+    public void insertPerson(PersonEntity personEntity, LibrariumEntity librariumEntity) {
 
         //departament list
-        if (type.equals("")) {
+        if (librariumEntity==null) {
             manager.persist(personEntity);
         } else {
-            LibrariumEntity librariumEntity = new LibrariumEntity();
-            librariumEntity.setType(type);
-            librariumEntity.setPersonEntity(personEntity);
-            manager.merge(librariumEntity);
+
+            LibrariumEntity librariumEntity1 = manager.merge(librariumEntity);
+            librariumEntity1.setPersonEntity(personEntity);
+            manager.persist(librariumEntity1);
+            manager.persist(personEntity);
         }
     }
 

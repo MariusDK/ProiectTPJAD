@@ -13,12 +13,12 @@
             <h:inputText value="#{personController.personEntity.CNP}"></h:inputText>
             <h:outputLabel value="Phone Number: " />
             <h:inputText value="#{personController.personEntity.phoneNumber}"></h:inputText>
-            <h:selectOneMenu value="#{personController.allLibrarium}">
-                <f:selectItems value="#{personController.librariumEntity.type}" />
+            <h:selectOneMenu value="#{personController.convertString(personController.librariumEntity)}">
+                <f:selectItems value="#{personController.allLibrarium}" />
             </h:selectOneMenu>
             <h:outputLabel></h:outputLabel>
             <h:commandButton value="Save"
-                             action="#{personController.savePerson(personController.personEntity,personController.librariumEntity.type)}">
+                             action="#{personController.savePerson(personController.personEntity,personController.librariumEntity)}">
             </h:commandButton>
         </h:panelGrid>
     </h:form>

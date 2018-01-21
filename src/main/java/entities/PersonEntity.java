@@ -53,4 +53,15 @@ public class PersonEntity implements Serializable{
     public void setLibrarium(LibrariumEntity librarium) {
         this.librarium = librarium;
     }
+
+    @Override
+    public String toString() {
+        return "PersonEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", CNP=" + CNP +
+                ", phoneNumber=" + phoneNumber +
+                ", librarium=" + librarium +
+                '}';
+    }
 }
