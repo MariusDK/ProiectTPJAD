@@ -1,6 +1,4 @@
-package entites;
-
-import entites.BookEntity;
+package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;

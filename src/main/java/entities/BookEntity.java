@@ -1,4 +1,4 @@
-package entites;
+package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -40,22 +40,30 @@ public class BookEntity implements Serializable {
     }
 
     @ManyToOne @JoinColumn
-    private DepartmentEntity departamentEntity;
+    private DepartmentEntity departament2;
 
-    public DepartmentEntity getDepartamentEntity() {
-        return departamentEntity;
+    public DepartmentEntity getDepartament2() {
+        return departament2;
     }
 
-    public void setDepartamentEntity(DepartmentEntity departamentEntity) {
-        this.departamentEntity = departamentEntity;
+    public void setDepartament2(DepartmentEntity departament2) {
+        this.departament2 = departament2;
     }
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Borower_Book",
             joinColumns = @JoinColumn( name = "Book_ID", referencedColumnName = "ID" ),
             inverseJoinColumns = @JoinColumn (name = "Librarium_ID", referencedColumnName = "ID"))
-    private List<LibrariumEntity> librariumEntities;
+    private List<LibrariumEntity> librarium;
 
+    public List<LibrariumEntity> getLibrarium() {
+        return librarium;
+    }
+
+    public void setLibrarium(List<LibrariumEntity> librarium) {
+        this.librarium = librarium;
+    }
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -64,34 +72,37 @@ public class BookEntity implements Serializable {
             inverseJoinColumns = @JoinColumn (name = "Person_ID", referencedColumnName = "ID"))
     private List<PersonEntity> personEntities;
 
-    public List<LibrariumEntity> getLibrariumEntities() {
-        return librariumEntities;
-    }
 
-    public void setLibrariumEntities(List<LibrariumEntity> librariumEntities) {
-        this.librariumEntities = librariumEntities;
-    }
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Book_Author",
             joinColumns = @JoinColumn( name = "Book_ID", referencedColumnName = "ID" ),
             inverseJoinColumns = @JoinColumn (name = "Author_ID", referencedColumnName = "ID"))
-    private List<AuthorEntity> authorEntities;
+    private List<AuthorEntity> author;
 
-    public List<AuthorEntity> getAuthorEntities() {
-        return authorEntities;
+    public List<AuthorEntity> getAuthor() {
+        return author;
     }
 
-    public void setAuthorEntities(List<AuthorEntity> authorEntities) {
-        this.authorEntities = authorEntities;
+    public void setAuthor(List<AuthorEntity> author) {
+        this.author = author;
     }
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Book_Genre",
             joinColumns = @JoinColumn( name = "Book_ID", referencedColumnName = "ID" ),
             inverseJoinColumns = @JoinColumn (name = "Genre_ID", referencedColumnName = "ID"))
-    private List<GenreEntity> genreEntities;
+    private List<GenreEntity> genre;
+
+    public List<GenreEntity> getGenre() {
+        return genre;
+    }
+
+    public void setGenre(List<GenreEntity> genre) {
+        this.genre = genre;
+    }
 
     public List<PersonEntity> getPersonEntities() {
         return personEntities;
@@ -101,11 +112,4 @@ public class BookEntity implements Serializable {
         this.personEntities = personEntities;
     }
 
-    public List<GenreEntity> getGenreEntities() {
-        return genreEntities;
-    }
-
-    public void setGenreEntities(List<GenreEntity> genreEntities) {
-        this.genreEntities = genreEntities;
-    }
-}
+   }

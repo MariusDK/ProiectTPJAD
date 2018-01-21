@@ -1,13 +1,15 @@
 package interfaces;
 
-import entites.PersonEntity;
+import entities.DepartmentEntity;
+import entities.LibrariumEntity;
+import entities.PersonEntity;
 
 import java.util.List;
 
 public interface IPersonBean {
-    public void insertPerson(String name, int CNP, int phoneNumber, String type);
+    public void insertPerson(PersonEntity personEntity, String type);
     public List<PersonEntity> getAllPersons();
     public void deletePerson(PersonEntity personEntity);
-    public void updatePerson(String name, int CNP, int phoneNumber, String type);
+    public void updatePerson(PersonEntity personEntity, LibrariumEntity librariumEntity);
 
 }

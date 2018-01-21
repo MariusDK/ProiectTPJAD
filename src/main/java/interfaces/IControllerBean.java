@@ -1,9 +1,9 @@
 package interfaces;
 
-import entites.AuthorEntity;
-import entites.BookEntity;
-import entites.DepartmentEntity;
-import entites.PersonEntity;
+import entities.AuthorEntity;
+import entities.BookEntity;
+import entities.DepartmentEntity;
+import entities.PersonEntity;
 
 
 import java.util.List;

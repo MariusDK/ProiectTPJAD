@@ -1,6 +1,6 @@
 package beans;
 
-import entites.*;
+import entities.*;
 import interfaces.IControllerBean;
 
 import javax.ejb.Local;

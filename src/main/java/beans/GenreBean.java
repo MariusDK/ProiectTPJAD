@@ -1,7 +1,7 @@
 package beans;
 
-import entites.BookEntity;
-import entites.GenreEntity;
+import entities.BookEntity;
+import entities.GenreEntity;
 import interfaces.IGenreBean;
 
 import javax.ejb.Local;

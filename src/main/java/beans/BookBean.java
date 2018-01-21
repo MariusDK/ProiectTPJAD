@@ -1,6 +1,6 @@
 package beans;
 
-import entites.*;
+import entities.*;
 import interfaces.IBookBean;
 
 import javax.ejb.Local;
@@ -22,12 +22,12 @@ public class BookBean implements IBookBean{
         BookEntity bookEntity = new BookEntity();
         bookEntity.setName(name);
         bookEntity.setRelease_year(release_year);
-        bookEntity.setDepartamentEntity(departmentEntity);
+        bookEntity.setDepartament2(departmentEntity);
         AuthorEntity authorEntity = new AuthorEntity();
         authorEntity.setName(nameAuthor);
 
-        bookEntity.setDepartamentEntity(departmentEntity);
-        bookEntity.setGenreEntities(genreEntities);
+
+        bookEntity.setGenre(genreEntities);
 
         manager.persist(bookEntity);
     }
@@ -52,7 +52,7 @@ public class BookBean implements IBookBean{
     @Override
     public void borowed(BookEntity bookEntity, List<PersonEntity> personEntities, List<LibrariumEntity> librariumEntity) {
         bookEntity.setPersonEntities(personEntities);
-        bookEntity.setLibrariumEntities(librariumEntity);
+        bookEntity.setLibrarium(librariumEntity);
     }
 
 }

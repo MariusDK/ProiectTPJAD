@@ -1,9 +1,9 @@
 package beans;
 
-import entites.BookEntity;
-import entites.DepartmentEntity;
-import entites.LibrariumEntity;
-import entites.PersonEntity;
+import entities.BookEntity;
+import entities.DepartmentEntity;
+import entities.LibrariumEntity;
+import entities.PersonEntity;
 import interfaces.IDepartmentBean;
 
 import javax.ejb.Local;
@@ -11,7 +11,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 

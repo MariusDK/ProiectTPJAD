@@ -1,6 +1,4 @@
-package entites;
-
-import entites.BookEntity;
+package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -38,7 +36,7 @@ public class DepartmentEntity implements Serializable{
         this.roomNumber = roomNumber;
     }
 
-    @OneToMany(mappedBy = "departamentEntity")
+    @OneToMany(mappedBy = "departament1")
     private List<LibrariumEntity> librariumEntities;
 
     public List<LibrariumEntity> getLibrariumEntities() {
@@ -48,7 +46,7 @@ public class DepartmentEntity implements Serializable{
     public void setLibrariumEntities(List<LibrariumEntity> librariumEntities) {
         this.librariumEntities = librariumEntities;
     }
-    @OneToMany(mappedBy = "departamentEntity")
+    @OneToMany(mappedBy = "departament2")
     private List<BookEntity> bookEntities;
 
     public List<BookEntity> getBookEntities() {

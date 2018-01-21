@@ -1,7 +1,8 @@
 package beans;
 
-import entites.LibrariumEntity;
-import entites.PersonEntity;
+import entities.DepartmentEntity;
+import entities.LibrariumEntity;
+import entities.PersonEntity;
 import interfaces.IPersonBean;
 
 import javax.ejb.Local;
@@ -20,17 +21,17 @@ public class PersonBean implements IPersonBean {
     private EntityManager manager;
 
     @Override
-    public void insertPerson(String name, int CNP, int phoneNumber, String type) {
-        PersonEntity personEntity = new PersonEntity();
-        personEntity.setName(name);
-        personEntity.setCNP(CNP);
-        personEntity.setPhoneNumber(phoneNumber);
-        LibrariumEntity librariumEntity = new LibrariumEntity();
-        librariumEntity.setType(type);
+    public void insertPerson(PersonEntity personEntity, String type) {
+
         //departament list
-        manager.persist(personEntity);
-        librariumEntity.setPersonEntity(personEntity);
-        manager.persist(librariumEntity);
+        if (type.equals("")) {
+            manager.persist(personEntity);
+        } else {
+            LibrariumEntity librariumEntity = new LibrariumEntity();
+            librariumEntity.setType(type);
+            librariumEntity.setPersonEntity(personEntity);
+            manager.merge(librariumEntity);
+        }
     }
 
     @Override
@@ -46,16 +47,8 @@ public class PersonBean implements IPersonBean {
     }
 
     @Override
-    public void updatePerson(String name, int CNP, int phoneNumber, String type) {
-
-        PersonEntity personEntity = new PersonEntity();
-        personEntity.setPhoneNumber(phoneNumber);
-        personEntity.setCNP(CNP);
-        personEntity.setName(name);
-        PersonEntity personEntity1 = manager.merge(personEntity);
-
-        LibrariumEntity librariumEntity = personEntity1.getLibrarium();
-        librariumEntity.setType(type);
-        manager.merge(librariumEntity);
+    public void updatePerson(PersonEntity personEntity,LibrariumEntity librariumEntity) {
+        personEntity.setLibrarium(librariumEntity);
+        manager.merge(personEntity);
     }
 }

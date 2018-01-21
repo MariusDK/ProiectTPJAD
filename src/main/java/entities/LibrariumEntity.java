@@ -1,4 +1,4 @@
-package entites;
+package entities;
 
 
 
@@ -42,15 +42,24 @@ public class LibrariumEntity implements Serializable {
     }
 
     @ManyToOne @JoinColumn
-    private DepartmentEntity departament;
+    private DepartmentEntity departament1;
 
-    public DepartmentEntity getDepartament() {
-        return departament;
+    public DepartmentEntity getDepartament1() {
+        return departament1;
     }
 
-    public void setDepartament(DepartmentEntity departament) {
-        this.departament = departament;
+    public void setDepartament1(DepartmentEntity departament1) {
+        this.departament1 = departament1;
     }
+
     @ManyToMany(mappedBy = "librarium")
     private List<BookEntity> bookEntitys;
+
+    public List<BookEntity> getBookEntitys() {
+        return bookEntitys;
+    }
+
+    public void setBookEntitys(List<BookEntity> bookEntitys) {
+        this.bookEntitys = bookEntitys;
+    }
 }

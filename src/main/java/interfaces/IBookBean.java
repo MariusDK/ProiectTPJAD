@@ -1,6 +1,6 @@
 package interfaces;
 
-import entites.*;
+import entities.*;
 
 import java.util.List;
 
