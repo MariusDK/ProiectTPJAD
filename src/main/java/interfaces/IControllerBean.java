@@ -10,33 +10,33 @@ import java.util.List;
 
 public interface IControllerBean {
     //CRUD Person
-    public void insertPerson(String name, int CNP, int phoneNumber, String type);
-    public List<PersonEntity> getAllPersons();
-    public void deletePerson(PersonEntity personEntity);
-    public void updatePerson(String name, int CNP, int phoneNumber, String type);
+    void insertPerson(String name, int CNP, int phoneNumber, String type);
+    List<PersonEntity> getAllPersons();
+    void deletePerson(PersonEntity personEntity);
+    void updatePerson(String name, int CNP, int phoneNumber, String type);
 
     //CRUD Departament
-    public void insertDepartment(String name, int roomNumber);
-    public List<DepartmentEntity> getAllDepartments();
-    public void deleteDepartment(DepartmentEntity departmentEntity);
-    public void updateDepartment(String name, int roomNumber);
+    void insertDepartment(String name, int roomNumber);
+    List<DepartmentEntity> getAllDepartments();
+    void deleteDepartment(DepartmentEntity departmentEntity);
+    void updateDepartment(String name, int roomNumber);
 
     //CRUD Book
-    public void insertBook(String name, String release_year);
-    public List<BookEntity> getAllBooks();
-    public void deleteBook(BookEntity bookEntity);
-    public void updateBook(String name, String release_year);
+    void insertBook(String name, String release_year);
+    List<BookEntity> getAllBooks();
+    void deleteBook(BookEntity bookEntity);
+    void updateBook(String name, String release_year);
 
     //CRUD Author
-    public void insertAuthor(String name);
-    public List<AuthorEntity> getAllAuthors();
-    public void deleteAuthor(AuthorEntity authorEntity);
-    public void updateAuthor(String name);
+    void insertAuthor(String name);
+    List<AuthorEntity> getAllAuthors();
+    void deleteAuthor(AuthorEntity authorEntity);
+    void updateAuthor(String name);
 
     //CRUD Genre
-    public void insertGenre(String name);
-    public List<AuthorEntity> getAllGenre();
-    public void deleteGenre(AuthorEntity authorEntity);
-    public void updateGenre(String name);
+    void insertGenre(String name);
+    List<AuthorEntity> getAllGenre();
+    void deleteGenre(AuthorEntity authorEntity);
+    void updateGenre(String name);
 
 }
