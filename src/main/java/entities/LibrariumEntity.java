@@ -65,8 +65,6 @@ public class LibrariumEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "LibrariumEntity{" +
-                "id=" + id +
-                ", type='" + type;
+        return type;
     }
 }

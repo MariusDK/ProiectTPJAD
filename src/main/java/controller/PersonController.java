@@ -12,6 +12,7 @@ import interfaces.IPersonBean;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -53,17 +54,8 @@ public class PersonController {
         return departmentEntity;
     }
 
-    public void savePerson(PersonEntity personEntity, LibrariumEntity librariumEntity)
+    public void savePerson()
     {
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("SUCA");
-
         personBean.insertPerson(personEntity, librariumEntity);
     }
     public void updatePerson(PersonEntity personEntity,LibrariumEntity librariumEntity)
@@ -80,18 +72,25 @@ public class PersonController {
     }
     public List<LibrariumEntity> getAllLibrarium()
     {
-
-        return librariumBean.getAllLibrarium();
+        List<LibrariumEntity> librariumEntities = new ArrayList<>();
+        for (LibrariumEntity librariumEntity:librariumBean.getAllLibrarium())
+        {
+            if (librariumEntity.getPersonEntity()==null)
+            {
+                librariumEntities.add(librariumEntity);
+            }
+        }
+        return librariumEntities;
     }
     public List<DepartmentEntity> getAllDepartments()
     {
 
         return departmentBean.getAllDepartments();
     }
-    public String convertString(LibrariumEntity librariumEntity)
+    public String convertStringLibrarium()
     {
 
-        return librariumBean.toString();
+        return librariumEntity.toString();
     }
 
 
