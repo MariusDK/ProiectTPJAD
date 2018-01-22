@@ -13,7 +13,7 @@
             <h:inputText value="#{personController.personEntity.CNP}"></h:inputText>
             <h:outputLabel value="Phone Number: " />
             <h:inputText value="#{personController.personEntity.phoneNumber}"></h:inputText>
-            <h:selectOneMenu value="#{personController.librariumEntity.id}">
+            <h:selectOneMenu value="#{personController.librariumEntity.type}" >
                 <f:selectItems value="#{personController.allLibrarium}" />
             </h:selectOneMenu>
             <h:outputLabel></h:outputLabel>

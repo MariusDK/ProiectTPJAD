@@ -6,9 +6,9 @@ import entities.GenreEntity;
 import java.util.List;
 
 public interface IGenreBean {
-    public void insertGenre(String name);
-    public List<GenreEntity> getAllGenre();
-    public void deleteGenre(GenreEntity genreEntity);
-    public void updateGenre(GenreEntity genreEntity);
-    public List<BookEntity> findAllBooksForGenre(GenreEntity genreEntity);
+    void insertGenre(String name);
+    List<GenreEntity> getAllGenre();
+    void deleteGenre(GenreEntity genreEntity);
+    void updateGenre(GenreEntity genreEntity);
+    List<BookEntity> findAllBooksForGenre(GenreEntity genreEntity);
 }

@@ -56,7 +56,14 @@ public class LibrariumBean implements ILibrariumBean{
     public PersonEntity getPersonForLibrarium(LibrariumEntity librariumEntity) {
         return librariumEntity.getPersonEntity();
     }
+    @Override
+    public int getIdForName(String type)
+    {
+        Query query = manager.createQuery("select l.id from LibrariumEntity l where l.type=:Ntype");
+        query.setParameter("Ntype", type);
+        int id_librarium=(int)query.getSingleResult();
+        return id_librarium;
 
-
+    }
 
 }

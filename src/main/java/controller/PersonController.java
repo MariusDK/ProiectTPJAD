@@ -56,6 +56,10 @@ public class PersonController {
 
     public void savePerson()
     {
+        if (librariumEntity.getType()!=null) {
+            int id = librariumBean.getIdForName(librariumEntity.getType());
+            librariumEntity.setId(id);
+        }
         personBean.insertPerson(personEntity, librariumEntity);
     }
     public void updatePerson(PersonEntity personEntity,LibrariumEntity librariumEntity)
