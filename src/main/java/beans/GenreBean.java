@@ -10,10 +10,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Local(interfaces.IGenreBean.class)
 @Stateless(name = "GenreBean")
 public class GenreBean implements IGenreBean {
+    private static Logger LOGGER = Logger.getLogger("InfoLogging");
 
     @PersistenceContext(unitName = "NewPersistenceUnit")
 
@@ -40,6 +42,8 @@ public class GenreBean implements IGenreBean {
 
     @Override
     public void updateGenre(GenreEntity genreEntity) {
+        LOGGER.info(String.valueOf(genreEntity.getId()));
+        LOGGER.info(String.valueOf(genreEntity.getName()));
         manager.merge(genreEntity);
     }
 
@@ -50,5 +54,8 @@ public class GenreBean implements IGenreBean {
         return bookEntities;
     }
 
-
+    @Override
+    public GenreEntity findGenre(Integer id) {
+        return manager.find(GenreEntity.class, id);
+    }
 }

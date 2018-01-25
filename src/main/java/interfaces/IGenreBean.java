@@ -11,4 +11,5 @@ public interface IGenreBean {
     public void deleteGenre(GenreEntity genreEntity);
     public void updateGenre(GenreEntity genreEntity);
     public List<BookEntity> findAllBooksForGenre(GenreEntity genreEntity);
+    public GenreEntity findGenre(Integer id);
 }

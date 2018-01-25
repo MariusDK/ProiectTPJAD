@@ -27,7 +27,7 @@ public class AuthorEntity implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    @ManyToMany(mappedBy = "author")
+    @ManyToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private List<BookEntity> bookEntities;
 
     public List<BookEntity> getBookEntities() {
