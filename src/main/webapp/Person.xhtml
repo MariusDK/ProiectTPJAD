@@ -20,7 +20,54 @@
             <h:commandButton value="Save"
                              action="#{personController.savePerson()}">
             </h:commandButton>
+
         </h:panelGrid>
+
+        <h:dataTable value="#{personController.personEntities}" var="person"  border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{person.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Name"/>
+                </f:facet>
+                <h:outputText value="#{person.name}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Telefon"/>
+                </f:facet>
+                <h:outputText value="#{person.phoneNumber}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="CNP"/>
+                </f:facet>
+                <h:outputText value="#{person.CNP}"/>
+            </h:column>
+            <!--<h:commandButton value="Update"-->
+                             <!--action="">-->
+            <!--</h:commandButton>-->
+            <h:column>
+            <h:commandButton value="Select"
+                             action="PersonUpdate.xhtml">
+                <f:setPropertyActionListener
+                        target="#{personController.personEntity}"
+                        value="#{person}" />
+            </h:commandButton>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Delete"
+                                 action="#{personController.deletePerson()}">
+                    <f:setPropertyActionListener
+                            target="#{personController.personEntity}"
+                            value="#{person}" />
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
     </h:form>
 </h:body>
 </html>

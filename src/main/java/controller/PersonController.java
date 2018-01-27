@@ -22,6 +22,8 @@ public class PersonController {
     LibrariumEntity librariumEntity = new LibrariumEntity();
     DepartmentEntity departmentEntity = new DepartmentEntity();
 
+    List<PersonEntity> personEntities = new ArrayList<>();
+
     @EJB
     IPersonBean personBean;
     @EJB
@@ -54,6 +56,15 @@ public class PersonController {
         return departmentEntity;
     }
 
+    public List<PersonEntity> getPersonEntities() {
+        personEntities = personBean.getAllPersons();
+        return personEntities;
+    }
+
+    public void setPersonEntities(List<PersonEntity> personEntities) {
+        this.personEntities = personEntities;
+    }
+
     public void savePerson()
     {
         if (librariumEntity.getType()!=null) {
@@ -62,13 +73,19 @@ public class PersonController {
         }
         personBean.insertPerson(personEntity, librariumEntity);
     }
-    public void updatePerson(PersonEntity personEntity,LibrariumEntity librariumEntity)
+    public void updatePerson()
     {
-        personBean.updatePerson(personEntity,librariumEntity);
+        System.out.println(personEntity.getId()+"         314212341234123         "+ personEntity.getName());
+        personBean.updatePerson(personEntity);
     }
-    public void deletePerson(PersonEntity personEntity)
+
+    public void deletePerson()
     {
         personBean.deletePerson(personEntity);
+    }
+    public void selectPerson()
+    {
+
     }
     public List<PersonEntity> ListPersons()
     {

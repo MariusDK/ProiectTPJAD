@@ -2,6 +2,7 @@ package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class PersonEntity implements Serializable{
@@ -46,12 +47,24 @@ public class PersonEntity implements Serializable{
     @OneToOne
     private LibrariumEntity librarium;
 
+    @ManyToMany(mappedBy = "personEntities")
+    private List<BookEntity> bookEntitys;
+
+
     public LibrariumEntity getLibrarium() {
         return librarium;
     }
 
     public void setLibrarium(LibrariumEntity librarium) {
         this.librarium = librarium;
+    }
+
+    public List<BookEntity> getBookEntitys() {
+        return bookEntitys;
+    }
+
+    public void setBookEntitys(List<BookEntity> bookEntitys) {
+        this.bookEntitys = bookEntitys;
     }
 
     @Override
