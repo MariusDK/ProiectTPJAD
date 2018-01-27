@@ -5,13 +5,13 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class GenreEntity implements Serializable{
+public class GenreEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int id;
-    private String name;
+    private String name = "";
 
     public int getId() {
         return id;
@@ -29,7 +29,7 @@ public class GenreEntity implements Serializable{
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "genre")
+    @ManyToMany(mappedBy = "genre", fetch = FetchType.EAGER)
     private List<BookEntity> bookEntities;
 
     public List<BookEntity> getBookEntities() {

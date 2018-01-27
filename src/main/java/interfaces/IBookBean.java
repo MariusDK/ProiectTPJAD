@@ -5,12 +5,13 @@ import entities.*;
 import java.util.List;
 
 public interface IBookBean {
-    void insertBook(String name, String release_year, DepartmentEntity departmentEntity, String nameAuthor, List<GenreEntity> genreEntities);
-    List<BookEntity> getAllBooks();
-    void deleteBook(BookEntity bookEntity);
-    void updateBook(BookEntity bookEntity);
 
+    public void insertBook(String name, String release_year, DepartmentEntity departmentEntity, List<AuthorEntity> ae, List<GenreEntity> genreEntities);
+    public List<BookEntity> getAllBooks();
+    public void deleteBook(BookEntity bookEntity);
+    public void updateBook(BookEntity bookEntity);
     void borowed(BookEntity bookEntities, List<PersonEntity> personEntities, List<LibrariumEntity> librariumEntity);
 
 
+    public  BookEntity getBook(int i);
 }

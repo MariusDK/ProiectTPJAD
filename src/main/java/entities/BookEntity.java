@@ -2,7 +2,9 @@ package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -89,7 +91,7 @@ public class BookEntity implements Serializable {
         this.author = author;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "Book_Genre",
             joinColumns = @JoinColumn( name = "Book_ID", referencedColumnName = "ID" ),
@@ -112,4 +114,7 @@ public class BookEntity implements Serializable {
         this.personEntities = personEntities;
     }
 
+    public List<AuthorEntity> authors() {
+        return new ArrayList<>(author);
+    }
    }

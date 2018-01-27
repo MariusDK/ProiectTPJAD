@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:u="http://java.sun.com/jsf/facelets">
+<f:view>
+    <h:form id="add-book">
+        <h:panelGrid columns="2" cellpadding="7">
+            <h:outputLabel value="Book name: " />
+            <h:inputText value="#{bookController.bookEntity.name}"></h:inputText>
+            <h:outputLabel value="Book year: " />
+            <h:inputText value="#{bookController.bookEntity.release_year}"></h:inputText>
+
+            <h3>GENRES</h3>
+            <h:selectManyCheckbox value="#{bookController.selectedG}">
+                <f:selectItems value="#{bookController.allGenres()}" var="genre"
+                               itemValue="#{genre.id}" itemLabel="#{genre.name}" />
+            </h:selectManyCheckbox>
+
+            <h3>AUTHORS</h3>
+            <h:selectManyCheckbox value="#{bookController.selectedA}">
+                <f:selectItems value="#{bookController.allAuthors()}" var="author"
+                               itemValue="#{author.id}" itemLabel="#{author.name}" />
+            </h:selectManyCheckbox>
+
+
+            <h:commandButton value="Save"
+                             action="#{bookController.saveBook(bookController.bookEntity)}">
+            </h:commandButton>
+        </h:panelGrid>
+    </h:form>
+
+
+    <h3>Existing GENRES</h3>
+    <u:repeat varStatus="loop" value="#{bookController.getAllBooks()}" var="book">
+        <h:form id="list-delete-form" style="border: 1px solid;">
+            <h:outputText value="#{book.id}"/><p>&nbsp;</p>
+            <h:outputText value="#{book.name}"/><p>&nbsp;</p>
+            <h:outputText value="#{book.release_year}"/><p>&nbsp;</p>
+
+            <h4>Book Genres:</h4>
+            <u:repeat varStatus="loop" value="#{book.getGenre()}" var="genre">
+                <div><h:outputText value="#{genre.name}"/></div>
+            </u:repeat>
+
+
+            <h:link value="Edit" outcome="BookEdit">
+                <f:param name="id" value="#{book.id}" />
+            </h:link>
+            <h:commandButton value="Delete This Book" action="#{bookController.deleteBook(book)}"></h:commandButton>
+        </h:form>
+        <br></br><br></br>
+    </u:repeat>
+
+
+</f:view>
+
+
+<h:form>
+    <h1>Book CRUD</h1>
+    <h:commandButton action = "Genre?faces-redirect=true" value = "Manage Genres" />
+    <h:commandButton action = "Author?faces-redirect=true" value = "Manage Authors" />
+</h:form>
+</html>
