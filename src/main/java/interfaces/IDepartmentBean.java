@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface IDepartmentBean
 {
-    void insertDepartment(String name, int roomNumber);
+    void insertDepartment(DepartmentEntity departmentEntity);
     List<DepartmentEntity> getAllDepartments();
     void deleteDepartment(DepartmentEntity departmentEntity);
-    void updateDepartment(String name, int roomNumber);
+    void updateDepartment(DepartmentEntity departmentEntity);
     List<BookEntity> getAllBook(int idDepartment);
     List<PersonEntity> getAllPersons(int idDepartment);
 }
