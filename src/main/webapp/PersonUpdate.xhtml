@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title> Person Data Update </title>
+</head>
+<body>
+<h:form>
+<h:panelGrid columns="2" cellpadding="7">
+    <h:outputLabel value="Cod: " />
+    <h:inputText readonly= "#{facesContext.renderResponse}" value="#{personController.personEntity.id}" />
+    <h:outputLabel value="Name: " />
+    <h:inputText value="#{personController.personEntity.name}"></h:inputText>
+    <h:outputLabel value="CNP: " />
+    <h:inputText value="#{personController.personEntity.CNP}"></h:inputText>
+    <h:outputLabel value="Phone Number: " />
+    <h:inputText value="#{personController.personEntity.phoneNumber}"></h:inputText>
+    <h:outputLabel></h:outputLabel>
+    <h:commandButton value="Update"
+                     action="#{personController.updatePerson()}">
+    </h:commandButton>
+</h:panelGrid>
+</h:form>
+</body>
+</html>

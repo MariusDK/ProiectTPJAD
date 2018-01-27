@@ -12,6 +12,7 @@ import interfaces.IPersonBean;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -20,6 +21,8 @@ public class PersonController {
     PersonEntity personEntity = new PersonEntity();
     LibrariumEntity librariumEntity = new LibrariumEntity();
     DepartmentEntity departmentEntity = new DepartmentEntity();
+
+    List<PersonEntity> personEntities = new ArrayList<>();
 
     @EJB
     IPersonBean personBean;
@@ -53,26 +56,36 @@ public class PersonController {
         return departmentEntity;
     }
 
-    public void savePerson(PersonEntity personEntity, LibrariumEntity librariumEntity)
-    {
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println(librariumEntity.getType());
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("SUCA");
+    public List<PersonEntity> getPersonEntities() {
+        personEntities = personBean.getAllPersons();
+        return personEntities;
+    }
 
+    public void setPersonEntities(List<PersonEntity> personEntities) {
+        this.personEntities = personEntities;
+    }
+
+    public void savePerson()
+    {
+        if (librariumEntity.getType()!=null) {
+            int id = librariumBean.getIdForName(librariumEntity.getType());
+            librariumEntity.setId(id);
+        }
         personBean.insertPerson(personEntity, librariumEntity);
     }
-    public void updatePerson(PersonEntity personEntity,LibrariumEntity librariumEntity)
+    public void updatePerson()
     {
-        personBean.updatePerson(personEntity,librariumEntity);
+        System.out.println(personEntity.getId()+"         314212341234123         "+ personEntity.getName());
+        personBean.updatePerson(personEntity);
     }
-    public void deletePerson(PersonEntity personEntity)
+
+    public void deletePerson()
     {
         personBean.deletePerson(personEntity);
+    }
+    public void selectPerson()
+    {
+
     }
     public List<PersonEntity> ListPersons()
     {
@@ -80,18 +93,25 @@ public class PersonController {
     }
     public List<LibrariumEntity> getAllLibrarium()
     {
-
-        return librariumBean.getAllLibrarium();
+        List<LibrariumEntity> librariumEntities = new ArrayList<>();
+        for (LibrariumEntity librariumEntity:librariumBean.getAllLibrarium())
+        {
+            if (librariumEntity.getPersonEntity()==null)
+            {
+                librariumEntities.add(librariumEntity);
+            }
+        }
+        return librariumEntities;
     }
     public List<DepartmentEntity> getAllDepartments()
     {
 
         return departmentBean.getAllDepartments();
     }
-    public String convertString(LibrariumEntity librariumEntity)
+    public String convertStringLibrarium()
     {
 
-        return librariumBean.toString();
+        return librariumEntity.toString();
     }
 
 

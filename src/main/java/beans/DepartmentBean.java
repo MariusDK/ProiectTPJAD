@@ -22,10 +22,7 @@ public class DepartmentBean implements IDepartmentBean{
     private EntityManager manager;
 
     @Override
-    public void insertDepartment(String name, int roomNumber) {
-        DepartmentEntity departmentEntity = new DepartmentEntity();
-        departmentEntity.setName(name);
-        departmentEntity.setRoomNumber(roomNumber);
+    public void insertDepartment(DepartmentEntity departmentEntity) {
         manager.persist(departmentEntity);
     }
 
@@ -42,10 +39,7 @@ public class DepartmentBean implements IDepartmentBean{
     }
 
     @Override
-    public void updateDepartment(String name, int roomNumber) {
-        DepartmentEntity departmentEntity = new DepartmentEntity();
-        departmentEntity.setName(name);
-        departmentEntity.setRoomNumber(roomNumber);
+    public void updateDepartment(DepartmentEntity departmentEntity) {
         manager.merge(departmentEntity);
     }
 
@@ -53,7 +47,7 @@ public class DepartmentBean implements IDepartmentBean{
     public List<PersonEntity> getAllPersons(int idDepartment)
     {
         List<PersonEntity> personEntityList = new ArrayList<>();
-        Query query = manager.createQuery("select d.librariumEntities from DepartmentEntity d where d.id =="+idDepartment);
+        Query query = manager.createQuery("select d.librariumEntities from DepartmentEntity d where d.id ="+idDepartment);
         List<LibrariumEntity> librariumEntities  = query.getResultList();
         for (LibrariumEntity librariumEntity : librariumEntities)
         {
@@ -66,7 +60,7 @@ public class DepartmentBean implements IDepartmentBean{
     public List<BookEntity> getAllBook(int idDepartment)
     {
         List<BookEntity> bookEntities = new ArrayList<>();
-        Query query = manager.createQuery("select d.bookEntities from DepartmentEntity d where d.id =="+idDepartment);
+        Query query = manager.createQuery("select d.bookEntities from DepartmentEntity d where d.id ="+idDepartment);
         bookEntities  = query.getResultList();
         for (BookEntity bookEntity : bookEntities)
         {

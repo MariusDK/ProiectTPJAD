@@ -7,10 +7,11 @@ import entities.PersonEntity;
 import java.util.List;
 
 public interface ILibrariumBean {
-    public void insertLibrarium(String type);
-    public List<LibrariumEntity> getAllLibrarium();
-    public void deleteLibrarium(LibrariumEntity librariumEntity);
-    public void updateLibrarium(String type);
-    public List<BookEntity> getBorowed_BookForLibrarium(LibrariumEntity librariumEntity);
-    public PersonEntity getPersonForLibrarium(LibrariumEntity librariumEntity);
+    void insertLibrarium(String type);
+    List<LibrariumEntity> getAllLibrarium();
+    void deleteLibrarium(LibrariumEntity librariumEntity);
+    void updateLibrarium(String type);
+    List<BookEntity> getBorowed_BookForLibrarium(LibrariumEntity librariumEntity);
+    PersonEntity getPersonForLibrarium(LibrariumEntity librariumEntity);
+    public int getIdForName(String name);
 }

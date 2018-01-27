@@ -23,14 +23,15 @@ public class PersonBean implements IPersonBean {
     @Override
     public void insertPerson(PersonEntity personEntity, LibrariumEntity librariumEntity) {
 
+
         //departament list
-        if (librariumEntity==null) {
+        if (librariumEntity.getType() == null) {
             manager.persist(personEntity);
         } else {
+            LibrariumEntity librariumEntity1 = manager.find(LibrariumEntity.class, librariumEntity.getId());
 
-            LibrariumEntity librariumEntity1 = manager.merge(librariumEntity);
             librariumEntity1.setPersonEntity(personEntity);
-            manager.persist(librariumEntity1);
+            personEntity.setLibrarium(librariumEntity1);
             manager.persist(personEntity);
         }
     }
@@ -44,12 +45,54 @@ public class PersonBean implements IPersonBean {
 
     @Override
     public void deletePerson(PersonEntity personEntity) {
-        manager.remove(manager.merge(personEntity));
+        PersonEntity personEntity1 = manager.find(PersonEntity.class, personEntity.getId());
+
+        if (personEntity1.getLibrarium() == null) {
+            manager.remove(manager.merge(personEntity));
+        } else {
+            LibrariumEntity librariumEntity = getLibrariumFromPersonId(personEntity.getId());
+            LibrariumEntity librariumEntity1 = manager.find(LibrariumEntity.class, librariumEntity.getId());
+            librariumEntity1.setPersonEntity(null);
+            manager.remove(manager.merge(personEntity));
+        }
     }
 
     @Override
-    public void updatePerson(PersonEntity personEntity,LibrariumEntity librariumEntity) {
-        personEntity.setLibrarium(librariumEntity);
-        manager.merge(personEntity);
+    public void updatePerson(PersonEntity personEntity) {
+        //PersonEntity personEntity1 = getPersonWithCNP(personEntity.getCNP());
+        PersonEntity personEntity2 = manager.find(PersonEntity.class, personEntity.getId());
+        personEntity2.setCNP(personEntity.getCNP());
+        personEntity2.setName(personEntity.getName());
+        personEntity2.setPhoneNumber(personEntity.getPhoneNumber());
+        manager.merge(personEntity2);
+    }
+
+    @Override
+    public LibrariumEntity getLibrariumFromPersonId(int id) {
+        Query query = manager.createQuery("select l from LibrariumEntity l where l.personEntity.id=:Nid");
+        query.setParameter("Nid", id);
+        LibrariumEntity librariumEntity = (LibrariumEntity) query.getSingleResult();
+        return librariumEntity;
+    }
+    @Override
+    public PersonEntity getPersonWithCNP(int CNP) {
+        Query query = manager.createQuery("select p from PersonEntity p where p.CNP=:NCNP");
+        query.setParameter("NCNP", CNP);
+        PersonEntity personEntity = (PersonEntity) query.getSingleResult();
+        return personEntity;
+
+    }
+    @Override
+    public PersonEntity selectHelper(PersonEntity personEntity)
+    {
+        PersonEntity personEntity1 = manager.find(PersonEntity.class, personEntity.getId());
+        if (personEntity1.getLibrarium() != null) {
+
+        } else {
+            LibrariumEntity librariumEntity = getLibrariumFromPersonId(personEntity.getId());
+            LibrariumEntity librariumEntity1 = manager.find(LibrariumEntity.class, librariumEntity.getId());
+            librariumEntity1.setPersonEntity(null);
+        }
+        return personEntity1;
     }
 }
