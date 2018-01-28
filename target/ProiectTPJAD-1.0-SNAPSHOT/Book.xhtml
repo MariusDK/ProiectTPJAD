@@ -46,11 +46,6 @@
                 <div><h:outputText value="#{genre.name}"/></div>
             </u:repeat>
 
-            <h4>Authors:</h4>
-            <u:repeat varStatus="loop" value="#{book.authors()}" var="author">
-                <div><h:outputText value="#{author.name}"/></div>
-            </u:repeat>
-
 
             <h:link value="Edit" outcome="BookEdit">
                 <f:param name="id" value="#{book.id}" />

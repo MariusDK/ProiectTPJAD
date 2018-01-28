@@ -1,5 +1,6 @@
 package beans;
 
+import entities.BookEntity;
 import entities.DepartmentEntity;
 import entities.LibrariumEntity;
 import entities.PersonEntity;
@@ -10,6 +11,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.List;
 
 @Local(interfaces.IPersonBean.class)
@@ -94,5 +97,32 @@ public class PersonBean implements IPersonBean {
             librariumEntity1.setPersonEntity(null);
         }
         return personEntity1;
+    }
+    @Override
+    public void updatePersonBook(PersonEntity personEntity, BookEntity bookEntity) {
+        PersonEntity personEntity2 = manager.find(PersonEntity.class, personEntity.getId());
+        int borrowedNumber = personEntity2.getAvailableBooks();
+        borrowedNumber--;
+        List<BookEntity> bookEntities = personEntity2.getBookEntitys();
+        bookEntities.add(bookEntity);
+        personEntity2.setBookEntitys(bookEntities);
+        personEntity2.setAvailableBooks(borrowedNumber);
+        manager.merge(personEntity2);
+    }
+    @Override
+    public List<PersonEntity> getAllPersonWithAvailableBookS()
+    {
+        Query query = manager.createQuery("select p from PersonEntity p where p.availableBooks > 0");
+        List<PersonEntity> personEntities = query.getResultList();
+        return personEntities;
+    }
+    @Override
+    public void returnBook(BookEntity book,PersonEntity personEntity)
+    {
+        PersonEntity personEntity1 = manager.find(PersonEntity.class, personEntity.getId());
+        BookEntity book1 = manager.find(BookEntity.class, book.getId());
+        List<BookEntity> bookEntities = personEntity1.getBookEntitys();
+        bookEntities.remove(book1);
+        manager.merge(personEntity1);
     }
 }
