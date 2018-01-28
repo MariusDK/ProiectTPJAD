@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Borrowed Panel</title>
+</head>
+<body>
+
+<h:form>
+    <h3>Person List</h3>
+    <h:dataTable value="#{borrowerController.personEntityList}" var="person"  border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Id"/>
+            </f:facet>
+            <h:outputText value="#{person.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Name"/>
+            </f:facet>
+            <h:outputText value="#{person.name}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Telefon"/>
+            </f:facet>
+            <h:outputText value="#{person.phoneNumber}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="CNP"/>
+            </f:facet>
+            <h:outputText value="#{person.CNP}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Number of available books"/>
+            </f:facet>
+            <h:outputText value="#{person.availableBooks}"/>
+        </h:column>
+        <!--<h:commandButton value="Update"-->
+        <!--action="">-->
+        <!--</h:commandButton>-->
+        <h:column>
+            <h:commandButton value="Select"
+                             action="StatusPerson.xhtml">
+                <f:setPropertyActionListener
+                        target="#{borrowerController.personEntity}"
+                        value="#{person}" />
+            </h:commandButton>
+        </h:column>
+        <h:panelGrid columns="2" cellpadding="7">
+            <h:outputLabel value="Name: " />
+            <h:inputText value="#{borrowerController.personEntity.name}"></h:inputText>
+            <h:commandButton value="Search"
+                             action="#{borrowerController.searchPerson}">
+            </h:commandButton>
+        </h:panelGrid>
+    </h:dataTable>
+</h:form>
+</body>
+</html>

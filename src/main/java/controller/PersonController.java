@@ -1,8 +1,5 @@
 package controller;
 
-import beans.DepartmentBean;
-import beans.LibrariumBean;
-import beans.PersonBean;
 import entities.DepartmentEntity;
 import entities.LibrariumEntity;
 import entities.PersonEntity;
@@ -71,11 +68,11 @@ public class PersonController {
             int id = librariumBean.getIdForName(librariumEntity.getType());
             librariumEntity.setId(id);
         }
+        personEntity.setAvailableBooks(5);
         personBean.insertPerson(personEntity, librariumEntity);
     }
     public void updatePerson()
     {
-        System.out.println(personEntity.getId()+"         314212341234123         "+ personEntity.getName());
         personBean.updatePerson(personEntity);
     }
 

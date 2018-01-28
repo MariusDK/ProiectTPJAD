@@ -12,6 +12,8 @@ public class PersonEntity implements Serializable{
     private String name;
     private int CNP;
     private int phoneNumber;
+    private int availableBooks;
+
 
     public int getId() {
         return id;
@@ -44,6 +46,15 @@ public class PersonEntity implements Serializable{
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public int getAvailableBooks() {
+        return availableBooks;
+    }
+
+    public void setAvailableBooks(int availableBooks) {
+        this.availableBooks = availableBooks;
+    }
+
     @OneToOne
     private LibrariumEntity librarium;
 

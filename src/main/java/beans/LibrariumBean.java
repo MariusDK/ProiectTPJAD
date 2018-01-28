@@ -2,6 +2,7 @@ package beans;
 
 
 import entities.BookEntity;
+import entities.DepartmentEntity;
 import entities.LibrariumEntity;
 import entities.PersonEntity;
 import interfaces.ILibrariumBean;
@@ -20,8 +21,10 @@ public class LibrariumBean implements ILibrariumBean{
 
     private EntityManager manager;
     @Override
-    public void insertLibrarium(String type) {
+    public void insertLibrarium(String type, DepartmentEntity departmentEntity) {
+        DepartmentEntity departmentEntity1 = manager.find(DepartmentEntity.class,departmentEntity.getId());
         LibrariumEntity librariumEntity = new LibrariumEntity();
+        librariumEntity.setDepartament1(departmentEntity1);
         librariumEntity.setType(type);
         manager.persist(librariumEntity);
     }
@@ -39,9 +42,7 @@ public class LibrariumBean implements ILibrariumBean{
     }
 
     @Override
-    public void updateLibrarium(String type) {
-        LibrariumEntity librariumEntity = new LibrariumEntity();
-        librariumEntity.setType(type);
+    public void updateLibrarium(LibrariumEntity librariumEntity) {
         manager.merge(librariumEntity);
     }
 
@@ -64,6 +65,29 @@ public class LibrariumBean implements ILibrariumBean{
         int id_librarium=(int)query.getSingleResult();
         return id_librarium;
 
+    }
+    @Override
+    public List<LibrariumEntity> getLibrariumWithPerson()
+    {
+        Query query = manager.createQuery("select l from LibrariumEntity l where l.personEntity IS NOT NULL");
+        List<LibrariumEntity> librariumEntities = query.getResultList();
+        return librariumEntities;
+    }
+
+    @Override
+    public List<LibrariumEntity> getAllFreePost()
+    {
+        Query query = manager.createQuery("select l from LibrariumEntity l where l.personEntity IS NULL");
+        List<LibrariumEntity> librariumEntities = query.getResultList();
+        return librariumEntities;
+    }
+    @Override
+    public int getDepartmentId(String name)
+    {
+        Query query = manager.createQuery("select d.id from DepartmentEntity d where d.name=:Nname");
+        query.setParameter("Nname", name);
+        int id_department=(int)query.getSingleResult();
+        return id_department;
     }
 
 }

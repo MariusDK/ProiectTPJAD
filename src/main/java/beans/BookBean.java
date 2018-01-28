@@ -49,7 +49,20 @@ public class BookBean implements IBookBean{
         List<BookEntity> bookEntities = query.getResultList();
         return bookEntities;
     }
-
+    @Override
+    public List<BookEntity> getAllBooksAvailable(PersonEntity personEntity) {
+        PersonEntity personEntity1 = manager.find(PersonEntity.class,personEntity.getId());
+        Query query = manager.createQuery("select b from BookEntity b where b is not in "+personEntity1.getBookEntitys());
+        List<BookEntity> bookEntities = query.getResultList();
+        return bookEntities;
+    }
+    @Override
+    public List<BookEntity> getAllBooksBorrowed(PersonEntity personEntity) {
+        PersonEntity personEntity1 = manager.find(PersonEntity.class,personEntity.getId());
+        Query query = manager.createQuery("select b from BookEntity b where b is in"+personEntity1.getBookEntitys());
+        List<BookEntity> bookEntities = query.getResultList();
+        return bookEntities;
+    }
     @Override
     public void deleteBook(BookEntity bookEntity) {
         bookEntity.setGenre(new ArrayList<GenreEntity>());

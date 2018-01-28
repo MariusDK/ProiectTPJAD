@@ -11,7 +11,7 @@ public interface IBookBean {
     public void deleteBook(BookEntity bookEntity);
     public void updateBook(BookEntity bookEntity);
     void borowed(BookEntity bookEntities, List<PersonEntity> personEntities, List<LibrariumEntity> librariumEntity);
-
-
+    public List<BookEntity> getAllBooksAvailable(PersonEntity personEntity);
+    public List<BookEntity> getAllBooksBorrowed(PersonEntity personEntity);
     public  BookEntity getBook(int i);
 }
