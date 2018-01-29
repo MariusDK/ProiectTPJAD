@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title> Department "#{departmentController.departmentEntity.name}" </title>
+</head>
+<body>
+<h:form>
+    <h:panelGrid columns="2" cellpadding="7">
+        <h:outputLabel value="Cod: " />
+        <h:inputText readonly= "#{facesContext.renderResponse}" value="#{departmentController.departmentEntity.id}" />
+        <h:outputLabel value="Name: " />
+        <h:inputText value="#{departmentController.departmentEntity.name}"></h:inputText>
+        <h:outputLabel value="Room Number: " />
+        <h:inputText value="#{departmentController.departmentEntity.roomNumber}"></h:inputText>
+        <h:outputLabel></h:outputLabel>
+        <h:commandButton value="Update"
+                         action="#{departmentController.updateDepartment()}">
+        </h:commandButton>
+
+        <p>Working at department list</p>
+        <h:dataTable value="#{departmentController.personEntities}" var="person"  border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{person.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Name"/>
+                </f:facet>
+                <h:outputText value="#{person.name}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Telefon"/>
+                </f:facet>
+                <h:outputText value="#{person.phoneNumber}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="CNP"/>
+                </f:facet>
+                <h:outputText value="#{person.CNP}"/>
+            </h:column>
+        </h:dataTable>
+
+
+        <p>Books of Department</p>
+        <h:dataTable value="#{departmentController.bookEntities}" var="book"  border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{book.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Name"/>
+                </f:facet>
+                <h:outputText value="#{book.name}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Author"/>
+                </f:facet>
+                <h:outputText value="#{book.author}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Genres"/>
+                </f:facet>
+                <h:outputText value="#{book.genre}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Release year"/>
+                </f:facet>
+                <h:outputText value="#{book.release_year}"/>
+            </h:column>
+        </h:dataTable>
+
+
+    </h:panelGrid>
+</h:form>
+</body>
+</html>

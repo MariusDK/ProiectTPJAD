@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Department Window</title>
+</head>
+<body>
+<h:form>
+    <h:panelGrid columns="2" cellpadding="7">
+        <h:outputLabel value="Name: " />
+        <h:inputText value="#{departmentController.departmentEntity.name}"></h:inputText>
+        <h:outputLabel value="Room Number: " />
+        <h:inputText value="#{departmentController.departmentEntity.roomNumber}"></h:inputText>
+        <h:outputLabel></h:outputLabel>
+        <h:commandButton value="Save"
+                         action="#{departmentController.saveDepartament()}">
+        </h:commandButton>
+    </h:panelGrid>
+
+    <h:dataTable value="#{departmentController.departmentEntities}" var="department"  border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Id"/>
+            </f:facet>
+            <h:outputText value="#{department.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Name"/>
+            </f:facet>
+            <h:outputText value="#{department.name}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Room Number"/>
+            </f:facet>
+            <h:outputText value="#{department.roomNumber}"/>
+        </h:column>
+        <h:column>
+            <h:commandButton value="Select"
+                             action="DepartmentUpdate.xhtml">
+                <f:setPropertyActionListener
+                        target="#{departmentController.departmentEntity}"
+                        value="#{department}" />
+            </h:commandButton>
+        </h:column>
+        <h:column>
+            <h:commandButton value="Delete"
+                             action="#{departmentController.deleteDepartment}">
+                <f:setPropertyActionListener
+                        target="#{departmentController.departmentEntity}"
+                        value="#{department}" />
+            </h:commandButton>
+        </h:column>
+    </h:dataTable>
+</h:form>
+</body>
+</html>

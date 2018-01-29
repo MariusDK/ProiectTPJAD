@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @ManagedBean
@@ -19,6 +20,7 @@ public class AuthorController {
     private AuthorEntity authorEntity = new AuthorEntity();
     private List<AuthorEntity> editAuthor = new ArrayList<AuthorEntity>();
     private AuthorEntity author = new AuthorEntity();
+    private String error;
 
     @EJB
     IAuthorBean authorBean;
@@ -35,7 +37,11 @@ public class AuthorController {
     }
 
     public void deleteAuthor(AuthorEntity authorEntity) {
-        authorBean.deleteAuthor(authorEntity);
+        try {
+            authorBean.deleteAuthor(authorEntity);
+        } catch (javax.ejb.EJBTransactionRolledbackException e) {
+            error = "Author unable to delete! Entity has book associations";
+        }
     }
 
 
@@ -79,5 +85,13 @@ public class AuthorController {
         ae.setName(newName);
         authorBean.updateAuthor(ae);
         FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "Author.xhtml");
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -39,7 +40,10 @@ public class AuthorBean implements IAuthorBean {
 
     @Override
     public void deleteAuthor(AuthorEntity a) {
+        LOGGER.info(String.valueOf(a.getId()));
+        a.setBookEntities(new ArrayList<BookEntity>());
         manager.remove(manager.merge(a));
+
     }
 
     @Override

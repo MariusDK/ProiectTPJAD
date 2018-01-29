@@ -8,6 +8,7 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.naming.OperationNotSupportedException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
@@ -66,6 +67,7 @@ public class BookBean implements IBookBean{
     @Override
     public void deleteBook(BookEntity bookEntity) {
         bookEntity.setGenre(new ArrayList<GenreEntity>());
+        bookEntity.setAuthor(new ArrayList<AuthorEntity>());
         manager.remove(manager.merge(bookEntity));
         LOGGER.log(Level.INFO, "success");
 

@@ -7,7 +7,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:u="http://java.sun.com/jsf/facelets">
 <f:view>
-    <h:form id="add-book">
+    <div style="padding: 10px; background-color:#E4F9F5">
+        <h:form style="display: inline-block;">
+            <h:commandButton action = "Book?faces-redirect=true" value = "Manage Books" class="menu-button"/>
+            <h:commandButton action = "Genre?faces-redirect=true" value = "Manage Genres" class="menu-button"/>
+            <h:commandButton action = "Author?faces-redirect=true" value = "Manage Authors" class="menu-button"/>
+        </h:form>
+    </div>
+
+
+    <h:form id="add-book" style="border: 1px solid black; margin-bottom: 20px;">
+        <h2>Add new book</h2>
         <h:panelGrid columns="2" cellpadding="7">
             <h:outputLabel value="Book name: " />
             <h:inputText value="#{bookController.bookEntity.name}"></h:inputText>
@@ -34,34 +44,37 @@
     </h:form>
 
 
-    <h3>Existing GENRES</h3>
+    <h3>Existing Books</h3>
     <u:repeat varStatus="loop" value="#{bookController.getAllBooks()}" var="book">
         <h:form id="list-delete-form" style="border: 1px solid;">
-            <h:outputText value="#{book.id}"/><p>&nbsp;</p>
-            <h:outputText value="#{book.name}"/><p>&nbsp;</p>
-            <h:outputText value="#{book.release_year}"/><p>&nbsp;</p>
+            <p>Book id: <h:outputText value="#{book.id}"/>&nbsp;</p>
+            <p>Book name:<h:outputText value="#{book.name}"/>&nbsp;</p>
+            <p>Book year:<h:outputText value="#{book.release_year}"/>&nbsp;</p>
 
             <h4>Book Genres:</h4>
             <u:repeat varStatus="loop" value="#{book.getGenre()}" var="genre">
                 <div><h:outputText value="#{genre.name}"/></div>
             </u:repeat>
 
+            <h4>Book Authors:</h4>
+            <u:repeat varStatus="loop" value="#{book.getAuthor()}" var="author">
+                <div><h:outputText value="#{author.name}"/></div>
+            </u:repeat>
 
-            <h:link value="Edit" outcome="BookEdit">
+            <h:commandButton value="Edit"
+                             action="BookEdit.xhtml">
                 <f:param name="id" value="#{book.id}" />
-            </h:link>
+                <f:setPropertyActionListener
+                        target="#{bookController.book}"
+                        value="#{book}" />
+            </h:commandButton>
             <h:commandButton value="Delete This Book" action="#{bookController.deleteBook(book)}"></h:commandButton>
         </h:form>
+
         <br></br><br></br>
+
     </u:repeat>
 
 
 </f:view>
-
-
-<h:form>
-    <h1>Book CRUD</h1>
-    <h:commandButton action = "Genre?faces-redirect=true" value = "Manage Genres" />
-    <h:commandButton action = "Author?faces-redirect=true" value = "Manage Authors" />
-</h:form>
 </html>

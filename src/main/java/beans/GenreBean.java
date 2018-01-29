@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Local(interfaces.IGenreBean.class)
@@ -37,6 +38,7 @@ public class GenreBean implements IGenreBean {
 
     @Override
     public void deleteGenre(GenreEntity genreEntity) {
+        LOGGER.log(Level.INFO, String.valueOf(genreEntity.getId()));
         manager.remove(manager.merge(genreEntity));
     }
 
