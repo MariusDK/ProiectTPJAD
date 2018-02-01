@@ -148,6 +148,7 @@ public class BookController {
         bookE.setName(name);
         bookE.setRelease_year(year);
         bookE.setGenre(selectedGenreEntities());
+        bookE.setAuthor(selectedAuthorEntities());
         bookBean.updateBook(bookE);
 
         FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "Book.xhtml");
@@ -186,4 +187,5 @@ public class BookController {
     public void setSelectedA(String[] selectedA) {
         this.selectedA = selectedA;
     }
+
 }

@@ -11,6 +11,13 @@
     <title>BOOK GENRE</title>
 </h:head>
 <h:body>
+    <div style="padding: 10px; background-color:#E4F9F5">
+        <h:form style="display: inline-block;">
+            <h:commandButton action = "Book?faces-redirect=true" value = "Manage Books" class="menu-button"/>
+            <h:commandButton action = "Genre?faces-redirect=true" value = "Manage Genres" class="menu-button"/>
+            <h:commandButton action = "Author?faces-redirect=true" value = "Manage Authors" class="menu-button"/>
+        </h:form>
+    </div>
     <h1>This is book GENRE</h1>
     <h:form>
         <h:panelGrid columns="2" cellpadding="7">
@@ -23,14 +30,20 @@
     </h:form>
 
     <h3>Existing GENRES</h3>
+    <h1 style="color: red;">#{genreController.error}</h1>
     <u:repeat varStatus="loop" value="#{genreController.getAllGenres()}" var="genre">
         <h:form id="list-delete-form">
-            <h:outputText value="#{genre.id}"/>
-            <h:outputText value="#{genre.name}"/>
+            <p>Genre id: <h:outputText value="#{genre.id}"/></p>
+            <p>Genre name: <h:outputText value="#{genre.name}"/></p>
             <h:commandButton value="Delete This Genre" action="#{genreController.deleteGenre(genre)}"></h:commandButton>
-            <h:link value="Edit" outcome="GenreEdit">
+
+            <h:commandButton value="Edit"
+                             action="GenreEdit.xhtml">
                 <f:param name="id" value="#{genre.id}" />
-            </h:link>
+                <f:setPropertyActionListener
+                        target="#{genreEditController.genre}"
+                        value="#{genre}" />
+            </h:commandButton>
         </h:form>
         <br></br><br></br>
     </u:repeat>

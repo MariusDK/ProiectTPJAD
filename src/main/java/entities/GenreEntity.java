@@ -29,7 +29,7 @@ public class GenreEntity implements Serializable {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "genre", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "genre")
     private List<BookEntity> bookEntities;
 
     public List<BookEntity> getBookEntities() {
