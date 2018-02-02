@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>beans.DepartmentBean</OriginalElement>
+  <nodes>
+    <node x="0.0" y="782.0">interfaces.IAuthorBean</node>
+    <node x="613.0" y="132.0">controller.PersonController</node>
+    <node x="536.6183035714287" y="982.0">beans.DepartmentBean</node>
+    <node x="1230.0" y="154.0">controller.GenreController</node>
+    <node x="1768.0" y="154.0">controller.DepartmentController</node>
+    <node x="1580.1183035714284" y="782.0">interfaces.IControllerBean</node>
+    <node x="368.74999999999994" y="782.0">interfaces.IDepartmentBean</node>
+    <node x="302.61830357142867" y="971.0">beans.GenreBean</node>
+    <node x="547.0" y="565.0">entities.DepartmentEntity</node>
+    <node x="1364.8645833333335" y="782.0">interfaces.IPersonBean</node>
+    <node x="869.0" y="587.0">entities.GenreEntity</node>
+    <node x="2123.0" y="110.0">controller.BookController</node>
+    <node x="921.9375000000002" y="782.0">javax.ejb.Local</node>
+    <node x="1493.0" y="143.0">controller.AuthorController</node>
+    <node x="771.2849702380953" y="971.0">beans.BookBean</node>
+    <node x="550.4270833333333" y="782.0">javax.ejb.Stateless</node>
+    <node x="1473.2849702380954" y="982.0">beans.ControllerBean</node>
+    <node x="1011.25" y="393.0">javax.persistence.Entity</node>
+    <node x="1005.2849702380953" y="982.0">beans.LibrariumBean</node>
+    <node x="229.0" y="143.0">controller.LibrariumController</node>
+    <node x="272.0" y="587.0">entities.AuthorEntity</node>
+    <node x="1021.9375000000002" y="782.0">interfaces.IBookBean</node>
+    <node x="191.0" y="782.0">interfaces.IGenreBean</node>
+    <node x="574.1666666666666" y="393.0">java.io.Serializable</node>
+    <node x="1239.2849702380954" y="982.0">beans.PersonBean</node>
+    <node x="1164.8645833333335" y="782.0">interfaces.ILibrariumBean</node>
+    <node x="1144.0" y="532.0">entities.BookEntity</node>
+    <node x="920.0" y="99.0">controller.BorrowerController</node>
+    <node x="1442.0" y="565.0">entities.LibrariumEntity</node>
+    <node x="68.61830357142867" y="971.0">beans.AuthorBean</node>
+    <node x="0.0" y="176.0">controller.GenreEditController</node>
+    <node x="1140.75" y="0.0">javax.faces.bean.ManagedBean</node>
+    <node x="0.0" y="543.0">entities.PersonEntity</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="entities.DepartmentEntity" target="java.io.Serializable">
+      <point x="-75.5" y="-69.5" />
+      <point x="-9.666666666666686" y="14.5" />
+    </edge>
+    <edge source="controller.BookController" target="javax.faces.bean.ManagedBean">
+      <point x="0.0" y="-113.5" />
+      <point x="2233.5" y="49.0" />
+      <point x="1267.3125" y="49.0" />
+      <point x="59.0625" y="14.5" />
+    </edge>
+    <edge source="controller.GenreController" target="javax.faces.bean.ManagedBean">
+      <point x="0.0" y="-69.5" />
+      <point x="1351.5" y="79.0" />
+      <point x="1216.6875" y="79.0" />
+      <point x="8.4375" y="14.5" />
+    </edge>
+    <edge source="entities.LibrariumEntity" target="java.io.Serializable">
+      <point x="-66.0" y="-69.5" />
+      <point x="1508.0" y="452.0" />
+      <point x="680.5" y="452.0" />
+      <point x="48.333333333333314" y="14.5" />
+    </edge>
+    <edge source="beans.AuthorBean" target="javax.ejb.Local">
+      <point x="71.33333333333331" y="-36.5" />
+      <point x="246.95163690476204" y="911.0" />
+      <point x="927.6517857142858" y="911.0" />
+      <point x="-34.285714285714334" y="14.5" />
+    </edge>
+    <edge source="controller.BorrowerController" target="javax.faces.bean.ManagedBean">
+      <point x="0.0" y="-124.5" />
+      <point x="1065.0" y="79.0" />
+      <point x="1199.8125" y="79.0" />
+      <point x="-8.4375" y="14.5" />
+    </edge>
+    <edge source="beans.DepartmentBean" target="interfaces.IDepartmentBean">
+      <point x="-71.33333333333337" y="-25.5" />
+      <point x="572.2849702380953" y="881.0" />
+      <point x="445.74999999999994" y="881.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="beans.AuthorBean" target="javax.ejb.Stateless">
+      <point x="0.0" y="-36.5" />
+      <point x="175.61830357142867" y="891.0" />
+      <point x="557.8556547619048" y="891.0" />
+      <point x="-44.571428571428555" y="14.5" />
+    </edge>
+    <edge source="beans.ControllerBean" target="interfaces.IControllerBean">
+      <point x="71.33333333333326" y="-25.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="beans.BookBean" target="javax.ejb.Local">
+      <point x="0.0" y="-36.5" />
+      <point x="878.2849702380953" y="941.0" />
+      <point x="961.9375000000002" y="941.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="beans.BookBean" target="javax.ejb.Stateless">
+      <point x="-71.33333333333326" y="-36.5" />
+      <point x="806.951636904762" y="891.0" />
+      <point x="602.4270833333333" y="891.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="entities.DepartmentEntity" target="javax.persistence.Entity">
+      <point x="75.5" y="-69.5" />
+      <point x="773.5" y="512.0" />
+      <point x="1046.25" y="512.0" />
+      <point x="-7.0" y="14.5" />
+    </edge>
+    <edge source="entities.PersonEntity" target="javax.persistence.Entity">
+      <point x="63.0" y="-91.5" />
+      <point x="189.0" y="492.0" />
+      <point x="1018.25" y="492.0" />
+      <point x="-35.0" y="14.5" />
+    </edge>
+    <edge source="entities.AuthorEntity" target="java.io.Serializable">
+      <point x="-63.75" y="-47.5" />
+      <point x="335.75" y="482.0" />
+      <point x="603.1666666666666" y="482.0" />
+      <point x="-29.0" y="14.5" />
+    </edge>
+    <edge source="entities.BookEntity" target="javax.persistence.Entity">
+      <point x="69.5" y="-102.5" />
+      <point x="1352.5" y="462.0" />
+      <point x="1074.25" y="462.0" />
+      <point x="21.0" y="14.5" />
+    </edge>
+    <edge source="beans.LibrariumBean" target="javax.ejb.Local">
+      <point x="0.0" y="-25.5" />
+      <point x="1112.2849702380954" y="871.0" />
+      <point x="973.3660714285716" y="871.0" />
+      <point x="11.428571428571445" y="14.5" />
+    </edge>
+    <edge source="beans.LibrariumBean" target="javax.ejb.Stateless">
+      <point x="-71.33333333333337" y="-25.5" />
+      <point x="1040.951636904762" y="881.0" />
+      <point x="617.2842261904761" y="881.0" />
+      <point x="14.857142857142833" y="14.5" />
+    </edge>
+    <edge source="beans.ControllerBean" target="javax.ejb.Stateless">
+      <point x="-71.33333333333326" y="-25.5" />
+      <point x="1508.951636904762" y="841.0" />
+      <point x="646.9985119047619" y="841.0" />
+      <point x="44.57142857142861" y="14.5" />
+    </edge>
+    <edge source="beans.ControllerBean" target="javax.ejb.Local">
+      <point x="0.0" y="-25.5" />
+      <point x="1580.2849702380954" y="831.0" />
+      <point x="996.2232142857144" y="831.0" />
+      <point x="34.28571428571422" y="14.5" />
+    </edge>
+    <edge source="beans.AuthorBean" target="interfaces.IAuthorBean">
+      <point x="-71.33333333333331" y="-36.5" />
+      <point x="104.2849702380953" y="951.0" />
+      <point x="62.5" y="951.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="entities.GenreEntity" target="java.io.Serializable">
+      <point x="-63.75" y="-47.5" />
+      <point x="932.75" y="482.0" />
+      <point x="641.8333333333333" y="482.0" />
+      <point x="9.666666666666686" y="14.5" />
+    </edge>
+    <edge source="beans.PersonBean" target="javax.ejb.Local">
+      <point x="0.0" y="-25.5" />
+      <point x="1346.2849702380954" y="851.0" />
+      <point x="984.7946428571431" y="851.0" />
+      <point x="22.85714285714289" y="14.5" />
+    </edge>
+    <edge source="beans.LibrariumBean" target="interfaces.ILibrariumBean">
+      <point x="71.33333333333337" y="-25.5" />
+      <point x="1183.6183035714287" y="951.0" />
+      <point x="1234.3645833333335" y="951.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="beans.BookBean" target="interfaces.IBookBean">
+      <point x="71.33333333333337" y="-36.5" />
+      <point x="949.6183035714287" y="951.0" />
+      <point x="1078.9375000000002" y="951.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="beans.PersonBean" target="javax.ejb.Stateless">
+      <point x="-71.33333333333326" y="-25.5" />
+      <point x="1274.951636904762" y="861.0" />
+      <point x="632.141369047619" y="861.0" />
+      <point x="29.714285714285722" y="14.5" />
+    </edge>
+    <edge source="entities.GenreEntity" target="javax.persistence.Entity">
+      <point x="63.75" y="-47.5" />
+      <point x="7.0" y="14.5" />
+    </edge>
+    <edge source="beans.GenreBean" target="javax.ejb.Local">
+      <point x="71.33333333333331" y="-36.5" />
+      <point x="480.951636904762" y="921.0" />
+      <point x="939.0803571428573" y="921.0" />
+      <point x="-22.85714285714289" y="14.5" />
+    </edge>
+    <edge source="beans.DepartmentBean" target="javax.ejb.Local">
+      <point x="71.33333333333331" y="-25.5" />
+      <point x="714.9516369047619" y="931.0" />
+      <point x="950.5089285714287" y="931.0" />
+      <point x="-11.428571428571445" y="14.5" />
+    </edge>
+    <edge source="beans.DepartmentBean" target="javax.ejb.Stateless">
+      <point x="-5.6843418860808015E-14" y="-25.5" />
+      <point x="643.6183035714287" y="901.0" />
+      <point x="587.5699404761905" y="901.0" />
+      <point x="-14.857142857142833" y="14.5" />
+    </edge>
+    <edge source="controller.AuthorController" target="javax.faces.bean.ManagedBean">
+      <point x="0.0" y="-80.5" />
+      <point x="1620.5" y="69.0" />
+      <point x="1233.5625" y="69.0" />
+      <point x="25.3125" y="14.5" />
+    </edge>
+    <edge source="beans.GenreBean" target="javax.ejb.Stateless">
+      <point x="0.0" y="-36.5" />
+      <point x="409.61830357142867" y="901.0" />
+      <point x="572.7127976190476" y="901.0" />
+      <point x="-29.714285714285722" y="14.5" />
+    </edge>
+    <edge source="controller.LibrariumController" target="javax.faces.bean.ManagedBean">
+      <point x="0.0" y="-80.5" />
+      <point x="411.0" y="59.0" />
+      <point x="1166.0625" y="59.0" />
+      <point x="-42.1875" y="14.5" />
+    </edge>
+    <edge source="entities.LibrariumEntity" target="javax.persistence.Entity">
+      <point x="66.0" y="-69.5" />
+      <point x="1640.0" y="442.0" />
+      <point x="1088.25" y="442.0" />
+      <point x="35.0" y="14.5" />
+    </edge>
+    <edge source="beans.GenreBean" target="interfaces.IGenreBean">
+      <point x="-71.33333333333331" y="-36.5" />
+      <point x="338.2849702380953" y="881.0" />
+      <point x="250.5" y="881.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="beans.PersonBean" target="interfaces.IPersonBean">
+      <point x="71.33333333333326" y="-25.5" />
+      <point x="1417.6183035714284" y="951.0" />
+      <point x="1427.3645833333335" y="951.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.DepartmentController" target="javax.faces.bean.ManagedBean">
+      <point x="0.0" y="-69.5" />
+      <point x="1935.5" y="59.0" />
+      <point x="1250.4375" y="59.0" />
+      <point x="42.1875" y="14.5" />
+    </edge>
+    <edge source="entities.BookEntity" target="java.io.Serializable">
+      <point x="-69.5" y="-102.5" />
+      <point x="1213.5" y="472.0" />
+      <point x="661.1666666666666" y="472.0" />
+      <point x="29.0" y="14.5" />
+    </edge>
+    <edge source="controller.PersonController" target="javax.faces.bean.ManagedBean">
+      <point x="-5.6843418860808015E-14" y="-91.5" />
+      <point x="756.5" y="69.0" />
+      <point x="1182.9375" y="69.0" />
+      <point x="-25.3125" y="14.5" />
+    </edge>
+    <edge source="controller.GenreEditController" target="javax.faces.bean.ManagedBean">
+      <point x="0.0" y="-47.5" />
+      <point x="104.5" y="49.0" />
+      <point x="1149.1875" y="49.0" />
+      <point x="-59.0625" y="14.5" />
+    </edge>
+    <edge source="entities.PersonEntity" target="java.io.Serializable">
+      <point x="-63.0" y="-91.5" />
+      <point x="63.0" y="472.0" />
+      <point x="583.8333333333333" y="472.0" />
+      <point x="-48.333333333333314" y="14.5" />
+    </edge>
+    <edge source="entities.AuthorEntity" target="javax.persistence.Entity">
+      <point x="63.75" y="-47.5" />
+      <point x="463.25" y="502.0" />
+      <point x="1032.25" y="502.0" />
+      <point x="-21.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4173927920330262" x="1288.5884086625706" y="730.3002431123645" />
+  <SelectedNodes>
+    <node>beans.DepartmentBean</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
