@@ -56,7 +56,7 @@ public class BookEntity implements Serializable {
     @JoinTable(
             name = "Borower_Book",
             joinColumns = @JoinColumn( name = "Book_ID", referencedColumnName = "ID" ),
-            inverseJoinColumns = @JoinColumn (name = "Librarium_ID", referencedColumnName = "ID"))
+            inverseJoinColumns = @JoinColumn (name = "Librarium_ID", referencedColumnName = "ID" ))
     private List<LibrariumEntity> librarium;
 
     public List<LibrariumEntity> getLibrarium() {
@@ -117,4 +117,11 @@ public class BookEntity implements Serializable {
     public List<AuthorEntity> authors() {
         return new ArrayList<>(author);
     }
-   }
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", name='" + name + '\'' +
+                ", release_year='" + release_year ;
+    }
+}

@@ -38,4 +38,8 @@ public class AuthorEntity implements Serializable {
         this.bookEntities = bookEntities;
     }
 
+    @Override
+    public String toString() {
+        return  name;
+    }
 }

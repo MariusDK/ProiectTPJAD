@@ -44,8 +44,16 @@
         <!--action="">-->
         <!--</h:commandButton>-->
         <h:column>
-            <h:commandButton value="Select"
-                             action="StatusPerson.xhtml">
+            <h:commandButton value="Available Book List"
+            action="StatusPerson.xhtml">
+            <f:setPropertyActionListener
+                    target="#{borrowerController.personEntity}"
+                    value="#{person}" />
+        </h:commandButton>
+        </h:column>
+        <h:column>
+            <h:commandButton value="Borrow Book List"
+                             action="BorowedBook.xhtml">
                 <f:setPropertyActionListener
                         target="#{borrowerController.personEntity}"
                         value="#{person}" />
@@ -56,6 +64,7 @@
             <h:inputText value="#{borrowerController.personEntity.name}"></h:inputText>
             <h:commandButton value="Search"
                              action="#{borrowerController.searchPerson}">
+
             </h:commandButton>
         </h:panelGrid>
     </h:dataTable>
