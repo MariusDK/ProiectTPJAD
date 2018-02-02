@@ -39,4 +39,9 @@ public class GenreEntity implements Serializable {
     public void setBookEntities(List<BookEntity> bookEntities) {
         this.bookEntities = bookEntities;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

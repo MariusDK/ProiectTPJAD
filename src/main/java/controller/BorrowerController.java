@@ -1,8 +1,11 @@
 package controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
 import entities.BookEntity;
 import entities.PersonEntity;
 import interfaces.IBookBean;
@@ -10,10 +13,15 @@ import interfaces.IPersonBean;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.FacesConverter;
 
 @ManagedBean
 public class BorrowerController {
-
+    private static Logger LOGGER = Logger.getLogger("InfoLogging");
     private PersonEntity personEntity = new PersonEntity();
     private BookEntity bookEntity = new BookEntity();
     private BookEntity bookEntity2 = new BookEntity();
@@ -44,8 +52,10 @@ public class BorrowerController {
             return bookEntityList2;
         }
         else{
-            bookEntityList2 = bookBean.getAllBooksBorrowed(personEntity);
+            PersonEntity personEntity1 = (PersonEntity) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("1");
+            bookEntityList2 = bookBean.getAllBooksBorrowed(personEntity1);
             return bookEntityList2;
+
         }
     }
 
@@ -75,6 +85,7 @@ public class BorrowerController {
 
     public void setPersonEntity(PersonEntity personEntity) {
         this.personEntity = personEntity;
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("1", personEntity);
     }
 
     public BookEntity getBookEntity() {
@@ -100,8 +111,18 @@ public class BorrowerController {
             return bookEntityList = bookBean.getAllBooks();
         }
         else{
-            return bookEntityList = bookBean.getAllBooksAvailable(personEntity);
+            PersonEntity personEntity1 = (PersonEntity) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("1");
+            System.out.println(personEntity1);
+            bookEntityList = bookBean.getAllBooksAvailable(personEntity1);
+            return bookEntityList;
         }
+    }
+    public void availableBooksList()
+    {
+        List<BookEntity> bookEntities = bookBean.getAllBooks();
+
+        //for (BookEntity bookEntity1:bookBean.)
+
 
     }
 
@@ -128,7 +149,14 @@ public class BorrowerController {
     }
     public void borrowedBook()
     {
+        System.out.println("$$$$"+personEntity.toString());
         personBean.updatePersonBook(personEntity,bookEntity);
+//        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+//        try {
+//            ec.redirect("BorrowedPanel.xhtml");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
     public void searchBook()
     {
@@ -150,7 +178,8 @@ public class BorrowerController {
     }
     public void ReturnBook()
     {
-        personBean.returnBook(bookEntity2,personEntity);
+        System.out.println("$$$$$$ "+bookEntity.getId());
+        personBean.returnBook(bookEntity,personEntity);
     }
 
 

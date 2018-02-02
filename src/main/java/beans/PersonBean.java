@@ -101,12 +101,21 @@ public class PersonBean implements IPersonBean {
     @Override
     public void updatePersonBook(PersonEntity personEntity, BookEntity bookEntity) {
         PersonEntity personEntity2 = manager.find(PersonEntity.class, personEntity.getId());
+        BookEntity bookEntity2 = manager.find(BookEntity.class, bookEntity.getId());
         int borrowedNumber = personEntity2.getAvailableBooks();
         borrowedNumber--;
         List<BookEntity> bookEntities = personEntity2.getBookEntitys();
-        bookEntities.add(bookEntity);
+        bookEntities.add(bookEntity2);
         personEntity2.setBookEntitys(bookEntities);
         personEntity2.setAvailableBooks(borrowedNumber);
+        System.out.println("1234"+personEntity2.toString());
+        System.out.println("1234"+bookEntity2.toString());
+        System.out.println(bookEntities.size());
+        List<PersonEntity> personEntities = bookEntity2.getPersonEntities();
+        personEntities.add(personEntity2);
+        bookEntity2.setPersonEntities(personEntities);
+        bookEntity2.setLibrarium(null);
+        manager.merge(bookEntity2);
         manager.merge(personEntity2);
     }
     @Override
@@ -117,12 +126,24 @@ public class PersonBean implements IPersonBean {
         return personEntities;
     }
     @Override
-    public void returnBook(BookEntity book,PersonEntity personEntity)
+    public void returnBook(BookEntity bookEntity,PersonEntity personEntity)
     {
-        PersonEntity personEntity1 = manager.find(PersonEntity.class, personEntity.getId());
-        BookEntity book1 = manager.find(BookEntity.class, book.getId());
-        List<BookEntity> bookEntities = personEntity1.getBookEntitys();
-        bookEntities.remove(book1);
-        manager.merge(personEntity1);
+        PersonEntity personEntity2 = manager.find(PersonEntity.class, personEntity.getId());
+        BookEntity bookEntity2 = manager.find(BookEntity.class, bookEntity.getId());
+
+        int borrowedNumber = personEntity2.getAvailableBooks();
+        borrowedNumber++;
+        personEntity2.setAvailableBooks(borrowedNumber);
+        List<PersonEntity> personEntities = bookEntity2.getPersonEntities();
+        personEntities.remove(personEntity2);
+        bookEntity2.setPersonEntities(personEntities);
+
+        List<BookEntity> bookEntities = personEntity2.getBookEntitys();
+        bookEntities.remove(bookEntity2);
+        personEntity2.setBookEntitys(bookEntities);
+
+        manager.merge(bookEntity2);
+        manager.merge(personEntity2);
+
     }
 }

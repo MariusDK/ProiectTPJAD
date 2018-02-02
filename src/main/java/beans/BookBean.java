@@ -52,17 +52,39 @@ public class BookBean implements IBookBean{
     }
     @Override
     public List<BookEntity> getAllBooksAvailable(PersonEntity personEntity) {
+
         PersonEntity personEntity1 = manager.find(PersonEntity.class,personEntity.getId());
-        Query query = manager.createQuery("select b from BookEntity b where b is not in "+personEntity1.getBookEntitys());
-        List<BookEntity> bookEntities = query.getResultList();
+        List<BookEntity> bookEntities = getAllBooks();
+        List<BookEntity> bookEntities2 = new ArrayList<>();
+        if (personEntity1.getBookEntitys().size()==0)
+        {
+            return bookEntities;
+        }
+        for (BookEntity bookEntity:personEntity1.getBookEntitys()) {
+            if (bookEntities.contains(bookEntity))
+            {
+                bookEntities.remove(bookEntity);
+            }
+        }
         return bookEntities;
     }
     @Override
     public List<BookEntity> getAllBooksBorrowed(PersonEntity personEntity) {
         PersonEntity personEntity1 = manager.find(PersonEntity.class,personEntity.getId());
-        Query query = manager.createQuery("select b from BookEntity b where b is in"+personEntity1.getBookEntitys());
-        List<BookEntity> bookEntities = query.getResultList();
-        return bookEntities;
+        List<BookEntity> bookEntities = getAllBooks();
+        List<BookEntity> bookEntities2 = new ArrayList<>();
+        if (personEntity1.getBookEntitys().size()==0)
+        {
+            return bookEntities;
+        }
+        for (BookEntity bookEntity:personEntity1.getBookEntitys()) {
+            if (bookEntities.contains(bookEntity))
+            {
+                bookEntities2.add(bookEntity);
+            }
+        }
+
+        return bookEntities2;
     }
     @Override
     public void deleteBook(BookEntity bookEntity) {
